@@ -1,3 +1,5 @@
+$colorPrimario:grey;
+
 *{
     margin : 0;
     padding : 0;
@@ -6,4 +8,32 @@
 
 html , body , #root {
     height: 100vh;
+}
+main {
+    flex-grow: 1;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-header {
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#header-container{
+    
+    align-items: center;
+    justify-content: space-between;
+    // margin-left: 20px;
+    // margin-right: 20px;
+}
+
+footer {
+    background-color: $colorPrimario;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.8em;
 }

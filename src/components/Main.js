@@ -2,7 +2,11 @@ import React from 'react'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <main>
+    
+        hola soy el main
+      
+    </main>
   )
 }
 
