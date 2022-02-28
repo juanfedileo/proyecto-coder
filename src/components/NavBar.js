@@ -5,7 +5,7 @@ function Menu(){
       <Navbar bg="dark" variant="dark" id="main-header">
       <Container fluid id="header-container"> 
       <div>  
-      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+      <Navbar.Brand href="#home">Tienda surf</Navbar.Brand>
       </div>
       <div>
       <Nav className="me-auto">
