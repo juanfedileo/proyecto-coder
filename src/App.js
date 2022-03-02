@@ -1,12 +1,12 @@
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import Main from './components/Main';
+import Main from './components/ItemListContainer';
 
 function App() {
     return (
         <>
             <NavBar />
-            <Main />
+            <Main nombre="Juan" apellido="Di Leo"/>
             <Footer/>
         </>
     );
