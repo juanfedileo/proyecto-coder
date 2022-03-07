@@ -5,10 +5,10 @@ import Button from 'react-bootstrap/Button'
 
 const ItemCount = (props) => {
 
-  const [quantity, setQuantity] = useState(props.init)
-  const addItem = () => {  if(quantity < props.stock) setQuantity(quantity + 1) }
-  const subItem = () => {  if(quantity > 0) setQuantity(quantity - 1) }
-  const addToCart = () => { props.onAdd(quantity); setQuantity(1) }
+  const [cant, setCant] = useState(props.init)
+  const addItem = () => {  if(cant < props.stock) setCant(cant + 1) }
+  const subItem = () => {  if(cant > 0) setCant(cant - 1) }
+  const addToCart = () => { props.onAdd(cant); setCant(1) }
   return (
     <div>
         <div>
@@ -18,7 +18,7 @@ const ItemCount = (props) => {
                 <ButtonToolbar>
                 <Button variant="info" onClick={subItem}>-</Button>
                 <InputGroup>
-                <FormControl type="text" value={quantity} readOnly />
+                <FormControl type="text" value={cant} readOnly />
                 </InputGroup>
                 <Button variant="info" onClick={addItem}>+</Button>
                 </ButtonToolbar>
