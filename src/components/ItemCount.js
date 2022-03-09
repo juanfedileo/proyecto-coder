@@ -5,10 +5,14 @@ import Button from 'react-bootstrap/Button'
 
 const ItemCount = (props) => {
 
-  const [cant, setCant] = useState(props.init)
+  const [cant, setCant] = useState(1)
   const addItem = () => {  if(cant < props.stock) setCant(cant + 1) }
   const subItem = () => {  if(cant > 0) setCant(cant - 1) }
-  const addToCart = () => { props.onAdd(cant); setCant(1) }
+  const addToCart = () => {
+     if (props.stock - cant >=0)
+        props.setStock(props.stock - cant)
+     setCant(1)
+  }
   return (
     <div>
         <div>
