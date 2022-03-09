@@ -20,7 +20,7 @@ const Main = (props) => {
       "pid":2,
       "stock":7,
       "price":20000,
-      "name":"quillas",
+      "name":"Quillas",
       "categor":['Surf','fins'],
       "imagen":"./3dfins.jpg"
     },
@@ -28,7 +28,7 @@ const Main = (props) => {
       "pid":3,
       "stock":11,
       "price":7000,
-      "name":"capucha",
+      "name":"Capucha",
       "categor":['Surf','Wetsuit'],
       "imagen":"./capucha.jpg"
     },
@@ -36,7 +36,7 @@ const Main = (props) => {
       "pid":4,
       "stock":5,
       "price":10000,
-      "name":"patas de rana",
+      "name":"Patas de rana",
       "categor":['Bodyboard','fins'],
       "imagen":"./patas.png"
     },
