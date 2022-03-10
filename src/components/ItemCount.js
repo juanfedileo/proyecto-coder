@@ -27,7 +27,9 @@ const ItemCount = (props) => {
                 <Button variant="info" onClick={addItem}>+</Button>
                 </ButtonToolbar>
             </div>
-            <Button variant="info" onClick={addToCart}>Agregar al carrito</Button>
+            <div id='botoncentrado'>
+            <Button variant="info" onClick={addToCart} >Agregar al carrito</Button>
+            </div>
         </div>
     </div>
   )
