@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CartWidget from './CartWidget'
 import ItemCount from './ItemCount'
 import ItemList from './ItemList'
@@ -8,8 +8,15 @@ const Main = (props) => {
 
   const [products,setProducts] = useState([])
   
-  const getProducts = new Promise((r)=> {setTimeout(()=> {r()}, 200) })
+  const getProducts = ()=>{
+    new Promise((r)=> {setTimeout(()=> {r()}, 200) })
       .then(()=>{setProducts(productsJson.products)})
+  }
+
+  useEffect(()=>{
+    getProducts()
+  },[])
+
   return (
     <main>
     

@@ -5,7 +5,7 @@ const ItemList = (props) => {
   return (
     <>
         {props.products.map((p)=>{
-            return <Item key={p.id} name={p.name} price={p.price} img={p.imagen} cat={p.categor} stock={p.stock} />
+            return <Item key={p.id} product={p} />
         })}
     </>
   )
