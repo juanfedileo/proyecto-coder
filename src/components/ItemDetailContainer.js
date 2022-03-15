@@ -15,7 +15,8 @@ const ItemDetailContainer = () => {
 
   return (
     <>
-        <ItemDetail key={product.pid} product={product}/>
+      
+      <ItemDetail key={product.pid} product={product}/>
     </>
   )
 }

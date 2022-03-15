@@ -11,8 +11,8 @@ const ItemDetail = (props) => {
         <Card.Body>
         <Card.Title>{props.product.name}</Card.Title>
         
-        <Card.Text>{props.product.categor.join(', ')}</Card.Text>
-        <Card.Text>{'$ '+props.product.price.toLocaleString('es')}</Card.Text>
+        <Card.Text>{props.product.categor}</Card.Text>
+        <Card.Text>{'$ '+props.product.price}</Card.Text>
         <ItemCount stock={stock} setStock={setStock}/>
         </Card.Body>
     </Card>

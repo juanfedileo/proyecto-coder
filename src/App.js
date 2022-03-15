@@ -7,10 +7,10 @@ function App() {
     return (
         <>
             <NavBar />
+            <Main nombre="Juan" apellido="Di Leo"/>
             <section>
             <ItemDetailContainer/>
             </section>
-            <Main nombre="Juan" apellido="Di Leo"/>
             <Footer/>
         </>
     );
