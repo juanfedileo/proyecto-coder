@@ -3,13 +3,13 @@ import productsJson from './productsJson';
 import ItemDetail from './ItemDetail'
 const ItemDetailContainer = () => {
 
-    const [product,setProduct]=useState({pid:0});
+    const [product,setProduct] = useState({pid:0});
     const getItem = (item) =>{
         new Promise((r)=>{setTimeout(()=>{r()},2000) } )
-        .then(()=>{setProduct(productsJson.products[item])})
+        .then(()=>{setProduct(productsJson.products[item]) })
     }
 
-    useEffect(()=>{
+    useEffect(() =>{
         getItem(0)
     },[])
 

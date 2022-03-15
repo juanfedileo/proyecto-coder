@@ -8,7 +8,7 @@ function App() {
         <>
             <NavBar />
             <section>
-                
+            <ItemDetailContainer/>
             </section>
             <Main nombre="Juan" apellido="Di Leo"/>
             <Footer/>

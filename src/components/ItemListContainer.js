@@ -9,7 +9,7 @@ const Main = (props) => {
   const [products,setProducts] = useState([])
   
   const getProducts = ()=>{
-    new Promise((r)=> {setTimeout(()=> {r()}, 200) })
+    new Promise((r)=> {setTimeout(()=> {r()}, 2000) })
       .then(()=>{setProducts(productsJson.products)})
   }
 
