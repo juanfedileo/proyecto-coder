@@ -1,19 +1,20 @@
 import {Navbar,Nav, Container} from 'react-bootstrap'
 import CartWidget from './CartWidget';
+import {Link,NavLink} from 'react-router-dom';
 
 function Menu(){
     return (
       <Navbar bg="dark" variant="dark" id="main-header">
       <Container fluid id="header-container"> 
       <div>  
-      <Navbar.Brand href="#home">Tienda surf</Navbar.Brand>
+      <Navbar.Brand as={NavLink} to="/">Tienda surf</Navbar.Brand>
       </div>
       <div>
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-        <Nav.Link href="#CartWidget"><CartWidget/></Nav.Link>
+        <Nav.Link as={NavLink} to="/categoria/">Surf</Nav.Link>
+        <Nav.Link as={NavLink} to="/categoria/">Bodyboard</Nav.Link>
+        <Nav.Link as={NavLink} to="/categoria/">Skate</Nav.Link>
+        <Nav.Link as={NavLink} to="/carrito"><CartWidget/></Nav.Link>
       </Nav>
       </div>
       </Container>
