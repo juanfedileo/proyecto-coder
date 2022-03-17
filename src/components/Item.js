@@ -9,7 +9,7 @@ const Item = (props) => {
     <Card border="info" style={{ width: '20rem'}}>
         <Link to={`/item/${props.product.pid}/`}><Button variant="info" size="sm">Detalle</Button></Link>
 
-        <Card.Img variant="top" src={props.product.imagen} alt={props.product.name} />
+        <Card.Img variant="top" src={`/${props.product.imagen}`} alt={props.product.name} />
         <Card.Body>
         <Card.Title>{props.product.name}</Card.Title>
         

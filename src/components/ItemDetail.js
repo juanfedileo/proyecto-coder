@@ -10,7 +10,7 @@ const ItemDetail = (props) => {
     return <></>
   return (  
     <Card border="info" style={{ width: '50rem'}}>
-        <Card.Img variant="top" src={props.product.imagen} alt={props.product.name} />
+        <Card.Img variant="top" src={`/${props.product.imagen}`} alt={props.product.name} />
         <Card.Body>
         <Card.Title>{props.product.name}</Card.Title>
         <p>Este es el detalle del producto particular</p>
