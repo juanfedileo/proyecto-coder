@@ -9,7 +9,7 @@ const ItemDetail = (props) => {
   if (props.product.pid == 0)
     return <></>
   return (  
-    <Card border="info" style={{ width: '50rem'}}>
+    <Card border="info" style={{ width: '30rem'}}>
         <Card.Img variant="top" src={`/${props.product.imagen}`} alt={props.product.name} />
         <Card.Body>
         <Card.Title>{props.product.name}</Card.Title>
