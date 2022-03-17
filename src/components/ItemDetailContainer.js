@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
         .then(() => {
           if (itemId != undefined)
             data = productsJson.products.find(e => e.pid == itemId)
-            console.log(data)
           setProduct(data) })
     }
 
