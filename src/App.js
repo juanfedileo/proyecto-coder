@@ -13,7 +13,7 @@ function App() {
             <section id="centro">
             <Routes>
                 <Route path="/" element={<Main nombre="Juan" apellido="Di Leo"/>}/>
-                <Route path="/categoria/:categoryId" element={<ItemDetailContainer/>}/>
+                <Route path="/categoria/:categoryId" element={<Main nombre="Juan" apellido="Di Leo"/>}/>
                 <Route path="/item/:itemId" element={<ItemDetailContainer/>} />
                 <Route path="/carrito" element={<div>carrito</div>}/>
             </Routes>
