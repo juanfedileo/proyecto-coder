@@ -16,8 +16,6 @@ const Item = (props) => {
         <Card.Text>{props.product.categor.join(', ')}</Card.Text>
         <Card.Text>{'$ '+props.product.price.toLocaleString('es')}</Card.Text>
 
-        <ItemCount stock={stock} setStock={setStock}/>
-
         </Card.Body>
     </Card>
   )
