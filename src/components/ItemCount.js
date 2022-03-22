@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {useState} from 'react'
 import { ButtonToolbar, FormControl, InputGroup } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
@@ -9,8 +10,7 @@ const ItemCount = (props) => {
   const addItem = () => {  if(cant < props.stock) setCant(cant + 1) }
   const subItem = () => {  if(cant > 0) setCant(cant - 1) }
   const addToCart = () => {
-     if (props.stock - cant >=0)
-        props.setStock(props.stock - cant)
+     props.onAdd(cant);
      setCant(1)
   }
   return (
@@ -27,8 +27,8 @@ const ItemCount = (props) => {
                 <Button variant="info" onClick={addItem}>+</Button>
                 </ButtonToolbar>
             </div>
-            <div id='botoncentrado'>
-            <Button variant="info" onClick={addToCart} >Agregar al carrito</Button>
+            <div id='botoncentrado'>       
+            {cant ? <Button variant="info" onClick={addToCart} >Agregar al carrito</Button> : <Link to="/carrito" className="button">Terminar mi compra</Link> }
             </div>
         </div>
     </div>
