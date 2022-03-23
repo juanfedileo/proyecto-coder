@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 import ItemCount from './ItemCount';
 import { Card } from 'react-bootstrap';
+import { toast, Flip } from 'react-toastify';
 
 const ItemDetail = (props) => {
 
   const [stock,setStock] = useState(props.product.stock)
 
-  const [ quantity, setQuantity ] = useState(0)
+  const [ cant, setCant ] = useState(0)
   const onAdd = (quantityToAdd) => {
-    setQuantity(quantityToAdd)
+    setCant(quantityToAdd)
     if (props.stock - quantityToAdd >=0)
         props.setStock(props.stock - quantityToAdd)
     // addItem(props.product, quantityToAdd)
-    alert('El producto se añadió al carrito.')
+    toast.success('El producto se añadió al carrito.', { theme: "colored", transition: Flip })
 }
 
   if (props.product.pid == 0)
@@ -25,7 +27,7 @@ const ItemDetail = (props) => {
         <p>Este es el detalle del producto particular</p>
         <Card.Text>{props.product.categor.join(', ')}</Card.Text>
         <Card.Text>{'$ '+props.product.price.toLocaleString('es')}</Card.Text>
-        <ItemCount stock={stock} setStock={setStock} onAdd={onAdd}/>
+        {cant ? <Link to="/carrito" className="button">Terminar mi compra</Link> : <ItemCount stock={stock} setStock={setStock} onAdd={onAdd}/>}
         </Card.Body>
     </Card>
   )
