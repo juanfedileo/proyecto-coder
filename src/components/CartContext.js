@@ -12,17 +12,17 @@ const CartProvider = ({ children }) => {
     const [ categories, setCategories ] = useState([])
     
     const clear = () => setCartItems([])
-    const isInCart = (array, itemId) => array.findIndex(e => e.id == itemId)
-    const removeItem = (itemId) => setCartItems(cartItems.filter(p => p.id != itemId))
+    const isInCart = (array, itemId) => array.findIndex(e => e.pid == itemId)
+    const removeItem = (itemId) => setCartItems(cartItems.filter(p => p.pid != itemId))
     const addItem = (item, quantity) => {
         let _products = products.slice()
         let _cartItems = cartItems.slice()
-        _products[isInCart(_products, item.id)].stock -= quantity
-        if(isInCart(_cartItems, item.id) + 1)
-        _cartItems[isInCart(_cartItems, item.id)].quantity += quantity
+        _products[isInCart(_products, item.pid)].stock -= quantity
+        if(isInCart(_cartItems, item.pid) + 1)
+        _cartItems[isInCart(_cartItems, item.pid)].quantity += quantity
         else{
             _cartItems.push(item)
-            _cartItems[isInCart(_cartItems, item.id)].quantity = quantity
+            _cartItems[isInCart(_cartItems, item.pid)].quantity = quantity
         }
         setProducts(_products)
         setCartItems(_cartItems)
