@@ -13,7 +13,9 @@ function Menu(){
       <Nav className="me-auto">
         <Nav.Link as={NavLink} to="/categoria/Surf">Surf</Nav.Link>
         <Nav.Link as={NavLink} to="/categoria/Bodyboard">Bodyboard</Nav.Link>
-        <Nav.Link as={NavLink} to="/carrito"><CartWidget/></Nav.Link>
+        <div id="carrito">
+        <CartWidget/>
+        </div>
       </Nav>
       </div>
       </Container>

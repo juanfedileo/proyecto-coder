@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext} from 'react'
+import { CartContext } from './CartContext';
 import {Link} from 'react-router-dom'
 import ItemCount from './ItemCount';
 import { Card } from 'react-bootstrap';
@@ -9,8 +10,12 @@ const ItemDetail = (props) => {
   const [stock,setStock] = useState(props.product.stock)
 
   const [ cant, setCant ] = useState(0)
+
+  const { categories, addItem } = useContext(CartContext)
+
   const onAdd = (quantityToAdd) => {
     setCant(quantityToAdd)
+    addItem(props.product, quantityToAdd)
     if (props.stock - quantityToAdd >=0)
         props.setStock(props.stock - quantityToAdd)
     // addItem(props.product, quantityToAdd)

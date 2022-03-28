@@ -2,17 +2,19 @@ import React from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from './CartContext'
-import { Table, Button } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 
 const Cart = () => {
 
     let total = 0;
     const {cartItems, removeItem} = useContext(CartContext);
+    console.log(cartItems);
 
   return (
     <div className='container carrito'>
         <h2>Carrito de Compras</h2>
         <Table striped bordered hover>
+        <thead>
             <tr>
                 <th>Producto</th>
                 <th>Precio</th>
@@ -20,6 +22,8 @@ const Cart = () => {
                 <th>Total</th>
                 <th>Acciones</th>
             </tr>
+        </thead>
+        <tbody>
             {cartItems.map((p) => {
                 total += p.price * p.cant;
                 return (
@@ -38,11 +42,14 @@ const Cart = () => {
                     </tr>
                 )
                 })}
+        </tbody>
+        <tfoot>
             <tr>
                 <th>TOTAL</th>
                 <th>{total}</th>
                 <th></th>
             </tr>
+        </tfoot>
         </Table>
     </div>
   )

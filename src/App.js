@@ -5,26 +5,26 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify'
 import CartContext from './components/CartContext'
+import CartProvider from './components/CartContext'
 import Cart from './components/Cart';
 
 function App() {
     return (
-        <CartContext>
+        <CartProvider>
         <BrowserRouter>
-            <NavBar />
-            
+            <NavBar/>
             <section id="centro">
             <Routes>
                 <Route path="/" element={<Main nombre="Juan" apellido="Di Leo"/>}/>
                 <Route path="/categoria/:categoryId" element={<Main nombre="Juan" apellido="Di Leo"/>}/>
                 <Route path="/item/:itemId" element={<ItemDetailContainer/>} />
-                <Route path="/carrito" element={<Cart />}/>
+                <Route path="/carrito" element={<Cart/>}/>
             </Routes>
             </section>
             <Footer/>
             <ToastContainer position="bottom-right" />
         </BrowserRouter>
-        </CartContext>
+        </CartProvider>
     );
 }
 
