@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from './CartContext'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 
 const Cart = () => {
 
@@ -25,19 +25,19 @@ const Cart = () => {
         </thead>
         <tbody>
             {cartItems.map((p) => {
-                total += p.price * p.cant;
+                total += p.price * p.quantity;
                 return (
                     <tr>
                         <td>
-                            <Link to={`/item/${p.id}/`}> 
+                            <Link to={`/item/${p.pid}/`}> 
                                 {p.name} 
                             </Link>
                         </td>
                         <td>{p.price.toLocaleString('es')}</td>
-                        <td>{p.cant}</td>
+                        <td>{p.quantity}</td>
                         <td>{(p.price * p.quantity)}</td>
                         <td>
-                        <button onClick={() => { removeItem(p.id) }}>Eliminar</button><Link to={`/item/${p.id}/`}>Ver</Link>
+                        <Button variant="outline-danger" onClick={() => { removeItem(p.pid) }}>Eliminar</Button><Link to={`/item/${p.pid}/`}>Ver</Link>
                         </td>
                     </tr>
                 )
