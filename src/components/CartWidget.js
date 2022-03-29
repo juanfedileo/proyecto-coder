@@ -9,9 +9,13 @@ const CartWidget = () => {
   const removeItem = useContext(CartContext);
 
   const cartTotal = () => {
-    let total = 0
+    let total=0
     // cartItems.map(item => total += item.quantity)
-    console.log(cartItems.length())
+    if(!cartItems.length){
+      total = 0
+    }else{
+      cartItems.map(item => total += item.quantity)
+    }
     return total
 }
   // const { cartItems, removeItem } = useContext(CartContext)
@@ -19,7 +23,7 @@ const CartWidget = () => {
     <div>
       <Link to="/carrito/" className="button">
       <MdShoppingCart/>
-      <span>cartTotal()</span>
+      <span>{cartTotal()}</span>
       {/* <span className="cart-items">{cartTotal()}</span> */}
       </Link>
     </div>
