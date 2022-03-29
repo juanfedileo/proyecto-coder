@@ -8,11 +8,12 @@ const Cart = () => {
 
     let total = 0;
     const {cartItems, removeItem} = useContext(CartContext);
-    console.log(cartItems);
+    console.log(cartItems.length);
 
   return (
     <div className='container carrito'>
         <h2>Carrito de Compras</h2>
+        {cartItems.length > 0 ? 
         <Table striped bordered hover>
         <thead>
             <tr>
@@ -24,6 +25,7 @@ const Cart = () => {
             </tr>
         </thead>
         <tbody>
+        
             {cartItems.map((p) => {
                 total += p.price * p.quantity;
                 return (
@@ -37,7 +39,7 @@ const Cart = () => {
                         <td>{p.quantity}</td>
                         <td>{(p.price * p.quantity)}</td>
                         <td>
-                        <Button variant="outline-danger" onClick={() => { removeItem(p.pid) }}>Eliminar</Button><Link to={`/item/${p.pid}/`}>Ver</Link>
+                        <Button variant="outline-danger" onClick={() => { removeItem(p.pid) }}>Eliminar</Button>{' '}<Link to={`/item/${p.pid}/`}><Button variant="outline-info">Ver</Button></Link>
                         </td>
                     </tr>
                 )
@@ -51,7 +53,13 @@ const Cart = () => {
             </tr>
         </tfoot>
         </Table>
-    </div>
+        :
+        <>
+        <h3>No hay productos en el carrito</h3>
+        <Link to="/"><Button variant="primary">Ir a la tienda</Button></Link>
+        </>
+        }
+    </div> 
   )
 }
 

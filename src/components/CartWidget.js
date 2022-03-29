@@ -7,20 +7,20 @@ import { CartContext } from './CartContext'
 const CartWidget = () => {
   const cartItems = useContext(CartContext);
   const removeItem = useContext(CartContext);
+
+  const cartTotal = () => {
+    let total = 0
+    // cartItems.map(item => total += item.quantity)
+    console.log(cartItems.length())
+    return total
+}
   // const { cartItems, removeItem } = useContext(CartContext)
   return (
     <div>
       <Link to="/carrito/" className="button">
       <MdShoppingCart/>
-      {/* {cartItems.map((p) => {
-          return (
-              <div className="item">
-                  <button onClick={() => { removeItem(p.pid) }}>X</button>
-                  <span>{p.name} ({p.quantity})</span>
-                  <h4 className="price">{p.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</h4>
-              </div>
-          )
-      })} */}
+      <span>cartTotal()</span>
+      {/* <span className="cart-items">{cartTotal()}</span> */}
       </Link>
     </div>
   )
