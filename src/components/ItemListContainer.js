@@ -5,41 +5,66 @@ import ItemCount from './ItemCount'
 import ItemList from './ItemList'
 import productsJson from './productsJson'
 import Toast from 'react-bootstrap/Toast'
+import {db} from './Firebase'
+import { getDocs, getCollection, collection } from 'firebase/firestore'
 
 const Main = (props) => {
 
   const [products,setProducts] = useState([])
   const {categoryId} = useParams()
   var data
-  
-  
 
   useEffect( () => {
     
+    const productsCollection = collection(db, 'products')
+    const documentos = getDocs(productsCollection)
+    console.log(documentos)
 
-    const promesa = new Promise((res,rej) =>{
-      setTimeout(()=>{
-        if (categoryId != undefined)
-          data = productsJson.products.filter(e => e.categor.includes(categoryId))
-        else
-          data = productsJson.products
-        res(data)
-      },2000)
-    })
+    const aux=[];
 
-    promesa
-      .then((respuestaDeLaApi)=>{
-        setProducts(data)
+    documentos
+      .then((respuesta) => {
+        respuesta.forEach((documento) => {
+          const producto = {
+            id : documento.id,
+            ... documento.data()
+          }
+          aux.push(producto)
+        })
+        setProducts(aux)
       })
-      .catch((errorDeLaApi) =>{
-        <Toast>
-          <Toast.Header>
-            <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-            <strong className="me-auto">Error Api</strong>
-          </Toast.Header>
-          <Toast.Body>Error.</Toast.Body>
-        </Toast>
+      .catch(()=>{<Toast>
+        <Toast.Header>
+          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+          <strong className="me-auto">Error Api</strong>
+        </Toast.Header>
+        <Toast.Body>Error.</Toast.Body>
+      </Toast>
       })
+
+    // const promesa = new Promise((res,rej) =>{
+    //   setTimeout(()=>{
+    //     if (categoryId != undefined)
+    //       data = productsJson.products.filter(e => e.categor.includes(categoryId))
+    //     else
+    //       data = productsJson.products
+    //     res(data)
+    //   },2000)
+    // })
+
+    // promesa
+    //   .then((respuestaDeLaApi)=>{
+    //     setProducts(data)
+    //   })
+    //   .catch((errorDeLaApi) =>{
+    //     <Toast>
+    //       <Toast.Header>
+    //         <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+    //         <strong className="me-auto">Error Api</strong>
+    //       </Toast.Header>
+    //       <Toast.Body>Error.</Toast.Body>
+    //     </Toast>
+    //   })
 
   },[categoryId])
 
