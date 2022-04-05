@@ -6,7 +6,7 @@ import ItemList from './ItemList'
 import productsJson from './productsJson'
 import Toast from 'react-bootstrap/Toast'
 import {db} from './Firebase'
-import { getDocs, getCollection, collection } from 'firebase/firestore'
+import { getDocs, getCollection, collection, where, query } from 'firebase/firestore'
 
 const Main = (props) => {
 
@@ -17,30 +17,38 @@ const Main = (props) => {
   useEffect( () => {
     
     const productsCollection = collection(db, 'products')
-    const documentos = getDocs(productsCollection)
-    console.log(documentos)
+    if (!categoryId) {
+      const miFiltro = query(productsCollection, where('categor', '==', "Surf"))
+      const documentos = getDocs(productsCollection, miFiltro)
 
-    const aux=[];
+      documentos
+      .then( respuesta=> setProducts(respuesta.docs.map(doc => doc.data())))
+      .catch( error => console.log(error))
+    }else{
 
-    documentos
-      .then((respuesta) => {
-        respuesta.forEach((documento) => {
-          const producto = {
-            id : documento.id,
-            ... documento.data()
-          }
-          aux.push(producto)
+      const documentos = getDocs(productsCollection)
+      const aux=[];
+  
+      documentos
+        .then((respuesta) => {
+          respuesta.forEach((documento) => {
+            const producto = {
+              id : documento.id,
+              ... documento.data()
+            }
+            aux.push(producto)
+          })
+          setProducts(aux)
         })
-        setProducts(aux)
-      })
-      .catch(()=>{<Toast>
-        <Toast.Header>
-          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-          <strong className="me-auto">Error Api</strong>
-        </Toast.Header>
-        <Toast.Body>Error.</Toast.Body>
-      </Toast>
-      })
+        .catch(()=>{<Toast>
+          <Toast.Header>
+            <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+            <strong className="me-auto">Error Api</strong>
+          </Toast.Header>
+          <Toast.Body>Error.</Toast.Body>
+        </Toast>
+        })
+    }
 
     // const promesa = new Promise((res,rej) =>{
     //   setTimeout(()=>{
