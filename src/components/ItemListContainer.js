@@ -13,16 +13,20 @@ const Main = (props) => {
   const [products,setProducts] = useState([])
   const {categoryId} = useParams()
   var data
+  console.log(categoryId)
 
   useEffect( () => {
     
     const productsCollection = collection(db, 'products')
-    if (!categoryId) {
-      const miFiltro = query(productsCollection, where('categor', '==', "Surf"))
-      const documentos = getDocs(productsCollection, miFiltro)
+    if (categoryId) {
+      const miFiltro = query(productsCollection, where('categor', 'array-contains', categoryId))
+      const documentos = getDocs(miFiltro)
 
       documentos
-      .then( respuesta=> setProducts(respuesta.docs.map(doc => doc.data())))
+      .then( (respuesta)=>{
+         setProducts(respuesta.docs.map(doc => doc.data()))
+        }
+        )
       .catch( error => console.log(error))
     }else{
 
