@@ -3,7 +3,7 @@ import productsJson from './productsJson';
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom';
 import {db} from './Firebase'
-import { getDocs, getCollection, collection, where, query } from 'firebase/firestore'
+import { getDocs, doc, getDoc, collection, where, query } from 'firebase/firestore'
 const ItemDetailContainer = () => {
 
     const [product,setProduct] = useState({pid:0});
@@ -31,17 +31,28 @@ const ItemDetailContainer = () => {
           setProduct(data) })
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
         //getItem(itemId)
         const productsCollection = collection(db, 'products')
         const miFiltro = query(productsCollection, where('id', '==', itemId))
+        console.log(itemId)
         const documentos = getDocs(miFiltro)
         documentos
         .then( (respuesta)=>{
+          console.log(respuesta.docs.map(doc => doc.data()))
           setProduct(respuesta.docs.map(doc => doc.data()))
         })
         .catch( error => console.log(error))
-    }, [itemId])
+    }, [itemId]) */
+
+    useEffect(() => {
+      if(product?.id !== itemId){
+          const docRef = doc(db, 'products', itemId)
+          getDoc(docRef)
+              .then((data) => setProduct({id: data.id, ...data.data()}))
+              .catch(error => console.log(error))
+      }
+  }, [itemId, product])
 
   return (
     <>
