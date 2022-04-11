@@ -37,7 +37,7 @@ const Main = (props) => {
         .then((respuesta) => {
           respuesta.forEach((documento) => {
             const producto = {
-              id : documento.id,
+              pid : documento.id,
               ... documento.data()
             }
             aux.push(producto)
