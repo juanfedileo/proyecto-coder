@@ -13,7 +13,6 @@ const Main = (props) => {
   const [products,setProducts] = useState([])
   const {categoryId} = useParams()
   var data
-  console.log(categoryId)
 
   useEffect( () => {
     
