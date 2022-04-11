@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     var data
     
 
-    const getItem2 = (itemId) =>{
+    /* const getItem2 = (itemId) =>{
       const productsCollection = collection(db, 'products')
       const miFiltro = query(productsCollection, where('id', '==', itemId))
       const documentos = getDocs(miFiltro)
@@ -20,16 +20,16 @@ const ItemDetailContainer = () => {
         setProduct(respuesta.docs.map(doc => doc.data()))
       })
       .catch( error => console.log(error))
-    }
+    } */
       
 
-    const getItem = (itemId) =>{
+    /* const getItem = (itemId) =>{
         new Promise((r)=>{setTimeout(()=>{r()},2000) } )
         .then(() => {
           if (itemId != undefined)
             data = productsJson.products.find(e => e.pid == itemId)
           setProduct(data) })
-    }
+    } */
 
     /* useEffect(() => {
         //getItem(itemId)
