@@ -18,9 +18,6 @@ const CartProvider = ({ children }) => {
 
     const addItem = (item, quantity) => {
 
-      console.log(item)
-      console.log(quantity)
-
       let _cartItems = cartItems.slice()
       let aux = isInCartin(_cartItems, item.id)
       if(aux != -1){
