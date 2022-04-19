@@ -11,7 +11,6 @@ const CartWidget = () => {
   const cartTotal = () => {
     let total=0
     
-    console.log(cartItems.cartItems.length)
     if(cartItems.cartItems.length == 0){
       total = 0
     }else{
@@ -22,7 +21,6 @@ const CartWidget = () => {
   
   useEffect(() => {
     aux = cartTotal()
-    console.log(aux)
   }, [cartItems.cartItems.length])
   
   return (

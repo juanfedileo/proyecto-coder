@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Card ,Button} from 'react-bootstrap'
-import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
 
 const Item = (props) => {

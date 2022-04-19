@@ -18,7 +18,7 @@ const ItemDetail = (props) => {
     addItem(props.product, quantityToAdd)
     if (props.stock - quantityToAdd >=0)
         props.setStock(props.stock - quantityToAdd)
-    // toast.success('El producto se añadió al carrito.', { theme: "colored", transition: Flip })
+    toast.success('El producto se añadió al carrito.', { theme: "colored", transition: Flip })
     alert('El producto se añadió al carrito.')
 }
 

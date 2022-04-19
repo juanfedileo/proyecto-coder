@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import CartWidget from './CartWidget'
-import ItemCount from './ItemCount'
 import ItemList from './ItemList'
-import productsJson from './productsJson'
 import Toast from 'react-bootstrap/Toast'
 import {db} from './Firebase'
-import { getDocs, getCollection, collection, where, query } from 'firebase/firestore'
+import { getDocs, collection, where, query } from 'firebase/firestore'
 
 const Main = (props) => {
 
@@ -21,7 +18,7 @@ const Main = (props) => {
       const miFiltro = query(productsCollection, where('categor', 'array-contains', categoryId))
       const documentos = getDocs(miFiltro)
       const aux=[];
-      
+
       documentos
       .then( (respuesta) => {
         respuesta.forEach((documento) => {

@@ -1,6 +1,6 @@
 import {Navbar,Nav, Container} from 'react-bootstrap'
 import CartWidget from './CartWidget';
-import {Link,NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 function Menu(){
     return (
