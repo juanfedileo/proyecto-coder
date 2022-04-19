@@ -8,8 +8,6 @@ const Cart = () => {
 
     let total = 0;
     const {cartItems, removeItem} = useContext(CartContext);
-    console.log(cartItems.length);
-    console.table(cartItems);
 
   return (
     <div className='container carrito'>

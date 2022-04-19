@@ -2,7 +2,6 @@ import React from 'react'
 import { toast, Flip } from 'react-toastify'
 import { useState, useEffect, createContext } from 'react'
 import { Toast } from 'bootstrap'
-import productsJson from './productsJson'
 import {db} from './Firebase'
 import { getDocs, collection } from 'firebase/firestore'
 
@@ -14,33 +13,21 @@ const CartProvider = ({ children }) => {
     const [ categories, setCategories ] = useState([])
     
     const clear = () => setCartItems([])
-    const isInCartin = (array, itemId) => array.findIndex(e => e.pid == itemId)
-    const isInCart = (array, item) => array.some(e => e.item === item)
+    const isInCartin = (array, itemId) => array.findIndex(e => e.id == itemId)
     const removeItem = (itemId) => setCartItems(cartItems.filter(p => p.pid != itemId))
-    // const addItem = (item, quantity) => {
-    //     let _products = products.slice()
-    //     let _cartItems = cartItems.slice()
-    //     _products[isInCart(_products, item.pid)].stock -= quantity
-    //     if(isInCart(_cartItems, item.pid) + 1)
-    //     _cartItems[isInCart(_cartItems, item.pid)].quantity += quantity
-    //     else{
-    //         _cartItems.push(item)
-    //         _cartItems[isInCart(_cartItems, item.pid)].quantity = quantity
-    //     }
-    //     setProducts(_products)
-    //     setCartItems(_cartItems)
-    // }
 
     const addItem = (item, quantity) => {
-      let _products = products.slice()
+
+      console.log(item)
+      console.log(quantity)
+
       let _cartItems = cartItems.slice()
-      if(isInCart(cartItems, item)){
-          _cartItems = cartItems.find(p => p.item === item)
-          _cartItems.quantity += quantity
-          _products = [...cartItems]
+      let aux = isInCartin(_cartItems, item.id)
+      if(aux != -1){
+          _cartItems[isInCartin(_cartItems, item.id)].quantity += quantity
       }else{
           _cartItems.push(item)
-          _cartItems[isInCartin(_cartItems, item.pid)].quantity = quantity
+          _cartItems[isInCartin(_cartItems, item.id)].quantity = quantity
       }
       setCartItems(_cartItems)
   }
@@ -70,33 +57,6 @@ const CartProvider = ({ children }) => {
           <Toast.Body>Error.</Toast.Body>
         </Toast>
         }) 
-
-
-        // var data
-        // setTimeout(() => {
-        //     const promesa = new Promise((res,rej) =>{
-        //         setTimeout(()=>{
-        //             data = productsJson.products
-        //           res(data)
-        //         },2000)
-        //       })
-          
-        //       promesa
-        //         .then((respuestaDeLaApi)=>{
-        //           setProducts(data)
-        //         })
-        //         .catch((errorDeLaApi) =>{
-        //           <Toast>
-        //             <Toast.Header>
-        //               <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-        //               <strong className="me-auto">Error Api</strong>
-        //             </Toast.Header>
-        //             <Toast.Body>Error.</Toast.Body>
-        //           </Toast>
-        //         })
-        // }, 2000)
-
-
     }, [])
 
   return (

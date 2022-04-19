@@ -11,14 +11,13 @@ const ItemDetail = (props) => {
 
   const [ cant, setCant ] = useState(0)
 
-  const { categories, addItem } = useContext(CartContext)
+  const { addItem } = useContext(CartContext)
 
   const onAdd = (quantityToAdd) => {
     setCant(quantityToAdd)
     addItem(props.product, quantityToAdd)
     if (props.stock - quantityToAdd >=0)
         props.setStock(props.stock - quantityToAdd)
-    // addItem(props.product, quantityToAdd)
     // toast.success('El producto se añadió al carrito.', { theme: "colored", transition: Flip })
     alert('El producto se añadió al carrito.')
 }
