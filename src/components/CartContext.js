@@ -3,6 +3,8 @@ import { useState, useEffect, createContext } from 'react'
 import { Toast } from 'bootstrap'
 import {db} from './Firebase'
 import { getDocs, collection } from 'firebase/firestore'
+import { toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CartContext = createContext()
 const CartProvider = ({ children }) => {
@@ -13,7 +15,11 @@ const CartProvider = ({ children }) => {
     
     const clear = () => setCartItems([])
     const isInCartin = (array, itemId) => array.findIndex(e => e.id == itemId)
-    const removeItem = (itemId) => setCartItems(cartItems.filter(p => p.pid != itemId))
+    const removeItem = (itemId) =>
+    { 
+      setCartItems(cartItems.filter(p => p.pid != itemId))
+      toast.error('El producto se elimino del carrito.', { theme: "colored", transition: Flip })
+    }
 
     const addItem = (item, quantity) => {
 
@@ -45,14 +51,7 @@ const CartProvider = ({ children }) => {
           })
           setProducts(aux)
         })
-        .catch(()=>{<Toast>
-          <Toast.Header>
-            <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-            <strong className="me-auto">Error Api</strong>
-          </Toast.Header>
-          <Toast.Body>Error.</Toast.Body>
-        </Toast>
-        }) 
+        .catch(error => toast.error(error, { theme: "colored", transition: Flip })) 
     }, [])
 
   return (

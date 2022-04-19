@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import ItemCount from './ItemCount';
 import { Card } from 'react-bootstrap';
 import { toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ItemDetail = (props) => {
 
@@ -19,8 +21,8 @@ const ItemDetail = (props) => {
     if (props.stock - quantityToAdd >=0)
         props.setStock(props.stock - quantityToAdd)
     toast.success('El producto se añadió al carrito.', { theme: "colored", transition: Flip })
-    alert('El producto se añadió al carrito.')
 }
+
 
   if (props.product.pid == 0)
     return <></>

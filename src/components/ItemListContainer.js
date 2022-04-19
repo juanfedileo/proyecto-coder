@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemList from './ItemList'
-import Toast from 'react-bootstrap/Toast'
 import {db} from './Firebase'
 import { getDocs, collection, where, query } from 'firebase/firestore'
+import { toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Main = (props) => {
 
@@ -31,7 +32,7 @@ const Main = (props) => {
         setProducts(aux)
       }
         )
-      .catch( error => console.log(error))
+      .catch( error => toast.error(error, { theme: "colored", transition: Flip }))
     }else{
 
       const documentos = getDocs(productsCollection)
@@ -48,14 +49,7 @@ const Main = (props) => {
           })
           setProducts(aux)
         })
-        .catch(()=>{<Toast>
-          <Toast.Header>
-            <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-            <strong className="me-auto">Error Api</strong>
-          </Toast.Header>
-          <Toast.Body>Error.</Toast.Body>
-        </Toast>
-        })
+        .catch(error => toast.error(error, { theme: "colored", transition: Flip }))
     }
 
   },[categoryId])

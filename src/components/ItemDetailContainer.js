@@ -3,6 +3,9 @@ import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom';
 import {db} from './Firebase'
 import { doc, getDoc } from 'firebase/firestore'
+import { toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ItemDetailContainer = () => {
 
     const [product,setProduct] = useState({pid:0});
@@ -13,7 +16,7 @@ const ItemDetailContainer = () => {
           const docRef = doc(db, 'products', itemId)
           getDoc(docRef)
               .then((data) => setProduct({id: data.id, ...data.data()}))
-              .catch(error => console.log(error))
+              .catch(error => toast.error(error, { theme: "colored", transition: Flip }))
       }
   }, [itemId, product])
 
