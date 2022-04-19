@@ -9,6 +9,7 @@ const Cart = () => {
     let total = 0;
     const {cartItems, removeItem} = useContext(CartContext);
     console.log(cartItems.length);
+    console.table(cartItems);
 
   return (
     <div className='container carrito'>
@@ -39,7 +40,7 @@ const Cart = () => {
                         <td>{p.quantity}</td>
                         <td>{(p.price * p.quantity)}</td>
                         <td>
-                        <Button variant="outline-danger" onClick={() => { removeItem(p.pid) }}>Eliminar</Button>{' '}<Link to={`/item/${p.pid}/`}><Button variant="outline-info">Ver</Button></Link>
+                        <Button variant="outline-danger" onClick={() => { removeItem(p.pid) }}>Eliminar</Button>{' '}<Link to={`/item/${p.id}/`}><Button variant="outline-info">Ver</Button></Link>
                         </td>
                     </tr>
                 )
