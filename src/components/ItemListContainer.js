@@ -20,11 +20,19 @@ const Main = (props) => {
     if (categoryId) {
       const miFiltro = query(productsCollection, where('categor', 'array-contains', categoryId))
       const documentos = getDocs(miFiltro)
-
+      const aux=[];
+      
       documentos
-      .then( (respuesta)=>{
-         setProducts(respuesta.docs.map(doc => doc.data()))
-        }
+      .then( (respuesta) => {
+        respuesta.forEach((documento) => {
+          const producto = {
+            pid : documento.id,
+            ... documento.data()
+          }
+          aux.push(producto)
+        })
+        setProducts(aux)
+      }
         )
       .catch( error => console.log(error))
     }else{
@@ -52,30 +60,6 @@ const Main = (props) => {
         </Toast>
         })
     }
-
-    // const promesa = new Promise((res,rej) =>{
-    //   setTimeout(()=>{
-    //     if (categoryId != undefined)
-    //       data = productsJson.products.filter(e => e.categor.includes(categoryId))
-    //     else
-    //       data = productsJson.products
-    //     res(data)
-    //   },2000)
-    // })
-
-    // promesa
-    //   .then((respuestaDeLaApi)=>{
-    //     setProducts(data)
-    //   })
-    //   .catch((errorDeLaApi) =>{
-    //     <Toast>
-    //       <Toast.Header>
-    //         <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-    //         <strong className="me-auto">Error Api</strong>
-    //       </Toast.Header>
-    //       <Toast.Body>Error.</Toast.Body>
-    //     </Toast>
-    //   })
 
   },[categoryId])
 

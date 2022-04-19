@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer>
-        soyfooter
+        Tienda de surf Proyecto Coderhouse
     </footer>
   )
 }
