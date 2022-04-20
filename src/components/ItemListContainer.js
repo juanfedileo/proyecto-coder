@@ -5,10 +5,12 @@ import {db} from './Firebase'
 import { getDocs, collection, where, query } from 'firebase/firestore'
 import { toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from './Loading'
 
 const Main = (props) => {
 
   const [products,setProducts] = useState([])
+  const [loading,setLoading] = useState(true)
   const {categoryId} = useParams()
   var data
 
@@ -33,6 +35,7 @@ const Main = (props) => {
       }
         )
       .catch( error => toast.error(error, { theme: "colored", transition: Flip }))
+      .finally(() => setLoading(false))
     }else{
 
       const documentos = getDocs(productsCollection)
@@ -50,17 +53,22 @@ const Main = (props) => {
           setProducts(aux)
         })
         .catch(error => toast.error(error, { theme: "colored", transition: Flip }))
+        .finally(() => setLoading(false))
     }
 
   },[categoryId])
 
+
+  if (loading) {
+    return <Loading />
+  }else{
   return (
     <main>
-    
     <h2>Bienvenido {props.nombre} {props.apellido}!</h2>
     <ItemList products={products}/>
     </main>
   )
+}
 }
 
 export default Main
