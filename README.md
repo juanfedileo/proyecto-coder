@@ -4,8 +4,9 @@ Proyecto creado durante la cursada de ReactJS en Coderhouse que se fue desarroll
 Dependencias extra utilizadas:
 - React Bootstrap
 - React Toastify: Usado para mensajes de formularios, alertas y errores
-Organización de archivos y carpetas
 
+
+Organización de archivos y carpetas
 El proyecto no consta de una distribucion de carpetas.
 
 Resumen
