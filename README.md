@@ -12,4 +12,6 @@ El proyecto no consta de una distribucion de carpetas.
 
 Resumen
 La aplicación carga los productos de una base de datos y los muestra en pantalla. Permite filtrarlos por categorías.
-La aplicacion fue deployeada en vercel y se puede visitar en la siguiente dirección: https://di-leo-ecommerce.vercel.app/
+La aplicacion fue deployeada en vercel y se puede visitar en la siguiente dirección:
+
+ https://di-leo-ecommerce.vercel.app/
