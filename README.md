@@ -1,3 +1,4 @@
+![App image](./public/homeImage.png)
 Tienda Santos Di Leo
 Proyecto creado durante la cursada de ReactJS en Coderhouse que se fue desarrollando a medida que fuimos aprendiendo los conceptos y fue creciendo entrega a entrega. La temática de la pagina es vender productos fisicos relacionados a la actividad deportiva surf y bodyboard.
 

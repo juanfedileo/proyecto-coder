@@ -17,7 +17,7 @@ const CartProvider = ({ children }) => {
     const isInCartin = (array, itemId) => array.findIndex(e => e.id == itemId)
     const removeItem = (itemId) =>
     { 
-      setCartItems(cartItems.filter(p => p.pid != itemId))
+      setCartItems(cartItems.filter(p => p.id != itemId))
       toast.error('El producto se elimino del carrito.', { theme: "colored", transition: Flip })
     }
 
