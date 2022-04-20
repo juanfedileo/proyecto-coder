@@ -30,7 +30,7 @@ const Cart = () => {
                 return (
                     <tr>
                         <td>
-                            <Link to={`/item/${p.pid}/`}> 
+                            <Link to={`/item/${p.id}/`}> 
                                 {p.name} 
                             </Link>
                         </td>
