@@ -13,6 +13,7 @@ const Cart = () => {
     <div className='container carrito'>
         <h2>Carrito de Compras</h2>
         {cartItems.length > 0 ? 
+        <>
         <Table striped bordered hover>
         <thead>
             <tr>
@@ -52,6 +53,8 @@ const Cart = () => {
             </tr>
         </tfoot>
         </Table>
+        <Link to="/orden-de-compra"><Button variant="primary">Terminar Compra</Button></Link>
+        </>
         :
         <>
         <h3>No hay productos en el carrito</h3>

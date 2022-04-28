@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import CartContext from './components/CartContext'
 import CartProvider from './components/CartContext'
 import Cart from './components/Cart';
+import CheckOut from './components/CheckOut';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/categoria/:categoryId" element={<Main nombre="Juan" apellido="Di Leo"/>}/>
                 <Route path="/item/:itemId" element={<ItemDetailContainer/>} />
                 <Route path="/carrito" element={<Cart/>}/>
+                <Route path="/orden-de-compra" element={<CheckOut/>}/>
             </Routes>
             </section>
             <Footer/>
