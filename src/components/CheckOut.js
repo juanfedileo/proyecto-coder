@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const CheckOut = () => {
-    const { cartItems, setCartItems } = useContext(CartContext)
+    const { cartItems, clear } = useContext(CartContext)
     const [nombre, setNombre] = useState('')
     const [mail, setMail] = useState('')
     const [telefono, setTelefono] = useState('')
@@ -53,11 +53,11 @@ const CheckOut = () => {
         console.log(newOrder)
         addDoc(orders,newOrder)
         .then(() => {
-            toast.success('La orden se realizó correctamente.', {theme: "colored", transition: Flip})
-            navigate('/')
+            clear()
         })
         .then(() => {
-            setCartItems([])
+            toast.success('La orden se realizó correctamente.', {theme: "colored", transition: Flip})
+            navigate('/')
         })
         .catch(
             error => toast.error(error, { theme: "colored", transition: Flip })
