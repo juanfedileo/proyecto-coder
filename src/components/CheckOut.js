@@ -5,14 +5,15 @@ import { Form, Button } from 'react-bootstrap'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import 'firebase/firestore'
 import { toast, Flip } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 
 
 const CheckOut = () => {
-    const { cartItems } = useContext(CartContext)
+    const { cartItems, setCartItems } = useContext(CartContext)
     const [nombre, setNombre] = useState('')
     const [mail, setMail] = useState('')
     const [telefono, setTelefono] = useState('')
-    const [final, setFinal] = useState(false)
+    const navigate = useNavigate()
 
     var totalito=0;
 
@@ -52,12 +53,17 @@ const CheckOut = () => {
         console.log(newOrder)
         addDoc(orders,newOrder)
         .then(() => {
+            toast.success('La orden se realizó correctamente.', {theme: "colored", transition: Flip})
+            navigate('/')
+        })
+        .then(() => {
+            setCartItems([])
         })
         .catch(
             error => toast.error(error, { theme: "colored", transition: Flip })
         )
         .finally(() => {
-            setFinal(true)
+            
         })      
     }
 
